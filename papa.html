@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8"> 
+
+<link href="https://fonts.cdnfonts.com/css/tonight-friend" rel="stylesheet">
+           
+<link href="https://fonts.cdnfonts.com/css/alysa-scrip" rel="stylesheet">
+                
+<link href="https://fonts.cdnfonts.com/css/hounted-christmas" rel="stylesheet">
+
+ <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+                
+<title></title>
+
+<style>
+
+h1{
+font-family:tonight friend;
+text-align: center;
+font-size:60px;
+color:#fff;
+}
+
+#p1 p,
+#p2 p,
+#p3 p,
+#p4 p,
+#p5 p{
+font-size:30px;
+}
+
+#Text2 {
+    display:none;
+}
+
+h2{
+color:#fff;
+font-family:alysa scrip;
+text-align: center;
+font-size:50px;
+}
+
+body::before{
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background-image: url("https://cdn.phototourl.com/free/2026-09-21-d89a51ef-a343-4358-b577-2b1fb0e3729a.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+z-index: -1;
+}
+
+button{
+font-size:40px;
+border-radius:15px;
+color:#fff;
+background-color:#A2BEA3;
+font-family:hounted christmas;
+display:block;
+text-align:center;
+margin:15px auto;
+box-shadow: 5px 5px 5px;
+padding:10px;
+}
+
+img{
+display:none;
+width:400px;
+border: #fff 4px solid;
+border-radius:15px;
+height:700px;
+margin:15px auto;
+object-fit:cover;
+}
+
+#weiter,
+#weiter2{
+font-size:60px;
+display:none;
+border-radius:15px;
+color:#fff;
+background-color:#759677;
+font-family:hounted christmas;
+text-align:center;
+margin:15px auto;
+box-shadow: 5px 5px 5px;
+padding:10px;
+position:fixed;
+bottom:0;
+right:20px;
+}
+
+p{
+color:#fff;
+font-family:tonight friend;
+}
+
+#Text3{
+display:none;
+}
+
+#p1{
+font-size:30px;
+border:2px solid #fff;
+width:600px;
+height:650px;
+text-align:center;
+display:block;
+margin:30px auto;
+border-radius:15px;
+background-color:#759677;
+box-shadow:10px 10px 10px white;
+}
+
+#p2{
+font-size:30px;
+border:2px solid #fff;
+width:600px;
+height:650px;
+text-align:center;
+display:block;
+margin:30px auto;
+border-radius:15px;
+background-color:#759677;
+box-shadow:10px 10px 10px white;
+}
+
+#p3{
+font-size:30px;
+border:2px solid #fff;
+width:600px;
+height:650px;
+text-align:center;
+display:block;
+margin:30px auto;
+border-radius:15px;
+background-color:#759677;
+box-shadow:10px 10px 10px white;
+}
+
+#p4{
+font-size:30px;
+border:2px solid #fff;
+width:600px;
+height:650px;
+text-align:center;
+display:block;
+margin:30px auto;
+border-radius:15px;
+background-color:#759677;
+box-shadow:10px 10px 10px white;
+}
+
+#p5{
+font-size:30px;
+border:2px solid #fff;
+width:600px;
+height:650px;
+text-align:center;
+display:block;
+margin:30px auto;
+border-radius:15px;
+background-color:#759677;
+box-shadow:10px 10px 10px white;
+}
+
+#pic_2_1,
+#pic_2_2,
+#pic_2_3,
+#pic_2_4,
+#pic_2_5
+{
+display:block;
+width:500px;
+height:500px;
+border:2px solid white;
+box-shadow:5px 5px 5px white;
+}
+
+#home,
+#home2,
+#home3{
+display:none;
+width:50px;
+font-size:20px;
+height:50px;
+position:fixed;
+left:9px;
+top:0;
+box-shadow:5px 5px 5px #fff;
+background-color:#3B5F50;
+border-radius:10px;
+}
+
+#home svg{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+}
+
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.select-box,
+.play-board,
+.result-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+:root {
+  --color-surface: #ffffff;
+  --color-text: #1f2933;
+  --color-border: #cbd5e1;
+  --color-primary: #2f6f4e;
+  --color-primary-hover: #24583e;
+  --color-on-primary: #ffffff;
+}
+.select-box,
+.play-board,
+.result-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+.select-box {
+  background: var(--color-surface);
+  padding: 20px 25px 25px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+}
+.select-box.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.select-box header {
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+.select-box .title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.select-box .options {
+  display: flex;
+  width: 100%;
+}
+.options button {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  border: none;
+  background: var(--color-primary);
+  border-radius: 5px;
+  color: var(--color-on-primary);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.options button:hover,
+.btn button:hover {
+  background: var(--color-primary-hover);
+}
+.options button.playerX {
+  margin-right: 5px;
+}
+.options button.playerO {
+  margin-left: 5px;
+}
+.select-box .credit {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.select-box .credit a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.select-box .credit a:hover {
+  text-decoration: underline;
+}
+.play-board {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.play-board.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.play-board .details {
+  padding: 7px;
+  border-radius: 5px;
+  background: var(--color-surface);
+}
+.play-board .players {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.players span {
+  position: relative;
+  z-index: 2;
+  color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+}
+.players.active span:first-child {
+  color: var(--color-on-primary);
+}
+.players.active span:last-child {
+  color: var(--color-primary);
+}
+.players span:first-child {
+  color: var(--color-on-primary);
+}
+.players .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.players.active .slider {
+  left: 50%;
+}
+.players.active span:first-child {
+  color: var(--color-primary);
+}
+.players.active span:nth-child(2) {
+  color: var(--color-on-primary);
+}
+.play-area {
+  margin-top: 20px;
+}
+.play-area section {
+  display: flex;
+  margin-bottom: 1px;
+}
+.play-area section span {
+  display: block;
+  height: 90px;
+  width: 90px;
+  margin: 2px;
+  color: var(--color-primary);
+  font-size: 40px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 5px;
+  background: var(--color-surface);
+}
+.result-box {
+  padding: 25px 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  background: var(--color-surface);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.result-box.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.result-box .won-text {
+  font-size: 30px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+.result-box .won-text p {
+  font-weight: 600;
+  margin: 0 5px;
+}
+.result-box .btn {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+.btn button {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: none;
+  background: var(--color-primary);
+  border-radius: 5px;
+  color: var(--color-on-primary);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#Text4{
+display:none;
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+
+    h1 {
+        font-size: 35px;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin: 5px;
+    }
+
+    button {
+        font-size: 25px;
+        padding: 5px 10px;
+        margin: 8px auto;
+    }
+
+    img {
+        width: 30vh;
+        height: 45vh;
+    }
+
+    #weiter,
+    #weiter2 {
+        font-size: 30px;
+        padding: 5px 10px;
+        right: 10px;
+        bottom: 5px;
+    }
+
+    #p1,
+    #p2,
+    #p3,
+    #p4,
+    #p5 {
+        width: 80vw;
+        height: 80vh;
+        margin: 10px auto;
+    }
+
+    #p1 p,
+    #p2 p,
+    #p3 p,
+    #p4 p,
+    #p5 p {
+        font-size: 20px;
+    }
+
+    #pic_2_1,
+    #pic_2_2,
+    #pic_2_3,
+    #pic_2_4,
+    #pic_2_5 {
+        width: 35vh;
+        height: 35vh;
+    }
+
+    .select-box {
+        width: 70%;
+        padding: 10px 15px;
+    }
+
+    .select-box header {
+        font-size: 25px;
+    }
+
+    .select-box .title {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .options button {
+        font-size: 16px;
+        padding: 6px 0;
+    }
+
+    .play-area section span {
+        width: 12vh;
+        height: 12vh;
+        line-height: 12vh;
+        font-size: 30px;
+    }
+
+    .play-area {
+        margin-top: 5px;
+    }
+
+}
+
+#landscapeNotice {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #759677;
+    color: white;
+    font-family: tonight friend;
+    font-size: 35px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Handy hochkant */
+@media (max-width: 600px) and (orientation: portrait) {
+    #landscapeNotice {
+        display: flex;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="landscapeNotice">
+    Bitte drehe das Handy ins Querformat.
+</div>
+
+<div id="Text1">
+
+<h1>Du hast das Easteregg gefunden!</h1>
+
+<h2>Waehle eine Option</h2>
+
+<button id="pics">.✦ ݁˖Fotos.✦ ݁˖</button>
+
+<button id="facts">.✦ ݁˖Fun Facts.✦ ݁˖</button>
+
+<button id="game">.✦ ݁˖Mini Game.✦ ݁˖</button>
+
+</div>
+
+<div id="Text2">
+
+<button id="home"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg></button>
+
+<img id="pic1" src="https://cdn.phototourl.com/free/2026-09-21-dae1c940-5d94-45a7-a598-32c5645fda27.jpg">
+
+<button id="weiter">WEITER</button>
+
+<img id="pic2" src="https://cdn.phototourl.com/free/2026-09-21-fa5b87f9-1050-4253-a848-350a7ecba204.jpg">
+
+<img id="pic3" src="https://cdn.phototourl.com/free/2026-09-21-8af1cdc7-3026-49bd-ba7b-2df1cd8bc9e2.jpg">
+
+<img id="pic4" src="https://cdn.phototourl.com/free/2026-09-21-401b0a3a-ba24-47b9-a069-701545026ffd.jpg">
+
+<img id="pic5" src="https://cdn.phototourl.com/member/2026-09-21-e00b2ab3-3588-4247-9995-695097fe16a1.jpg">
+
+<img id="pic6" src="https://cdn.phototourl.com/member/2026-09-22-5bfab890-dc29-4830-90a4-7aaf13f992e4.jpg">
+
+<img id="pic7" src="https://cdn.phototourl.com/member/2026-09-22-2e3e449b-c0b8-4ab4-adf1-e40fe87df90c.jpg">
+
+<img id="pic8" src="https://cdn.phototourl.com/member/2026-09-22-5948f071-6fb8-4b30-8ece-0fce61d5430a.jpg">
+
+
+
+</div>
+
+<div id="Text3">
+
+<button id="home2"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg></button>
+
+<div id="p1">
+
+<p>...traegt immer eine kurze Hose, aber nie ohne Socken.</p>
+<img id="pic_2_1"src="https://cdn.phototourl.com/member/2026-09-22-eaeac2e8-c2e8-4d54-a961-ad3be1ac987d.jpg">
+
+</div>
+
+<button id="weiter2">WEITER</button>
+
+<div id="p2">
+<p>...ist ein großer Bayern Muenchen Fan.</p>
+<img id="pic_2_2"src="https://cdn.phototourl.com/member/2026-09-22-4d91fddb-3b7a-42da-ab32-59d4c966bc06.jpg">
+</div>
+
+<div id="p3">
+<p>...war frueher im Schuetzenverein.</p>
+<img id="pic_2_3"src="https://cdn.phototourl.com/member/2026-09-22-e088de01-c764-4779-b98f-0ee1f2a080bf.jpg">
+</div>
+
+<div id="p4">
+<p >...war schon mit dem Auto, Motorrad und Schiff am Nordkap.</p>
+<img id="pic_2_4"src="https://cdn.phototourl.com/member/2026-09-22-2b8bee2a-2d6d-4cba-acc2-ddbbde7680c7.jpg">
+</div>
+
+<div id="p5">
+<p >...geht gerne und oft ins Kino</p>
+<img id="pic_2_5"src="https://cdn.phototourl.com/member/2026-09-22-2f0538a0-2ebe-4e56-897d-fa414b6ba565.jpg">
+</div>
+
+</div>
+
+<div id="Text4">
+
+  <div class="select-box">
+    <header>Tic Tac Toe</header>
+    <div class="content">
+      <div class="title">Wähle deinen Spieler:</div>
+      <div class="options">
+        <button class="playerX">Spieler (X)</button>
+        <button class="playerO">Spieler (O)</button>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Spielfeld -->
+  <div class="play-board">
+    <div class="details">
+      <div class="players">
+        <span class="Xturn">X ist dran</span>
+        <span class="Oturn">O ist dran</span>
+        <div class="slider"></div>
+      </div>
+    </div>
+
+    <div class="play-area">
+      <section>
+        <span class="box1"></span>
+        <span class="box2"></span>
+        <span class="box3"></span>
+      </section>
+
+      <section>
+        <span class="box4"></span>
+        <span class="box5"></span>
+        <span class="box6"></span>
+      </section>
+
+      <section>
+        <span class="box7"></span>
+        <span class="box8"></span>
+        <span class="box9"></span>
+      </section>
+    </div>
+  </div>
+
+  <!-- Ergebnis -->
+  <div class="result-box">
+    <div class="won-text"></div>
+    <div class="btn">
+      <button>Nochmal spielen</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <button id="home3">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+      <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/>
+    </svg>
+  </button>
+
+</div>
+
+</div>
+
+</body>
+
+<script>
+
+document.getElementById("pics").addEventListener("click", function(){
+document.getElementById("Text2").style.display="block";
+document.getElementById("Text1").style.display="none"
+document.getElementById("weiter").style.display="block"
+document.getElementById("pic1").style.display="block"
+document.getElementById("pic2").style.display="none"
+document.getElementById("pic3").style.display="none"
+document.getElementById("pic4").style.display="none"
+document.getElementById("pic5").style.display="none"
+document.getElementById("home").style.display="block"
+})
+
+let picture=1;
+
+document.getElementById("weiter").addEventListener("click", function(){
+
+if(picture==1){
+document.getElementById("pic2").style.display="block";
+document.getElementById("pic1").style.display="none";
+picture=2;
+}
+
+else if(picture==2){
+document.getElementById("pic3").style.display="block";
+document.getElementById("pic2").style.display="none";
+picture=3;
+}
+
+else if(picture==3){
+document.getElementById("pic4").style.display="block";
+document.getElementById("pic3").style.display="none";
+picture=4;
+}
+
+else if(picture==4){
+document.getElementById("pic5").style.display="block";
+document.getElementById("pic4").style.display="none";
+picture=5;
+}
+
+else if(picture==5){
+document.getElementById("pic6").style.display="block";
+document.getElementById("pic5").style.display="none";
+picture=6;
+}
+
+else if(picture==6){
+document.getElementById("pic7").style.display="block";
+document.getElementById("pic6").style.display="none";
+picture=7;
+}
+
+else if(picture==7){
+document.getElementById("pic8").style.display="block";
+document.getElementById("pic7").style.display="none";
+picture=8;
+}
+
+else if(picture==8){
+document.getElementById("pic1").style.display="block";
+document.getElementById("pic8").style.display="none";
+picture=1;
+}
+
+})
+
+document.getElementById("facts").addEventListener("click", function(){
+document.getElementById("Text3").style.display="block";
+document.getElementById("Text1").style.display="none"
+document.getElementById("weiter2").style.display="block"
+document.getElementById("p1").style.display="block"
+document.getElementById("p2").style.display="none"
+document.getElementById("p3").style.display="none"
+document.getElementById("p4").style.display="none"
+document.getElementById("p5").style.display="none"
+document.getElementById("home2").style.display="block"
+})
+
+document.getElementById("game").addEventListener("click", function(){
+document.getElementById("Text4").style.display="block";
+document.getElementById("Text1").style.display="none"
+document.getElementById("home3").style.display="block"
+})
+
+let text=1;
+
+document.getElementById("weiter2").addEventListener("click", function(){
+
+if(text==1){
+document.getElementById("p2").style.display="block";
+document.getElementById("p1").style.display="none";
+text=2;
+}
+
+else if(text==2){
+document.getElementById("p3").style.display="block";
+document.getElementById("p2").style.display="none";
+text=3;
+}
+
+else if(text==3){
+document.getElementById("p4").style.display="block";
+document.getElementById("p3").style.display="none";
+text=4;
+}
+
+else if(text==4){
+document.getElementById("p5").style.display="block";
+document.getElementById("p4").style.display="none";
+text=5;
+}
+
+else if(text==5){
+document.getElementById("p1").style.display="block";
+document.getElementById("p5").style.display="none";
+text=1;
+}
+
+})
+
+document.getElementById("home").addEventListener("click", function(){
+document.getElementById("Text1").style.display="block";
+document.getElementById("Text2").style.display="none"
+document.getElementById("Text3").style.display="none"
+document.getElementById("Text4").style.display="none"
+})
+
+document.getElementById("home2").addEventListener("click", function(){
+document.getElementById("Text1").style.display="block";
+document.getElementById("Text2").style.display="none"
+document.getElementById("Text3").style.display="none"
+document.getElementById("Text4").style.display="none"
+})
+
+document.getElementById("home3").addEventListener("click", function(){
+document.getElementById("Text1").style.display="block";
+document.getElementById("Text2").style.display="none"
+document.getElementById("Text3").style.display="none"
+document.getElementById("Text4").style.display="none"
+})
+
+// Select all required elements
+const selectBox = document.querySelector(".select-box"),
+    selectBtnX = selectBox.querySelector(".options .playerX"),
+    selectBtnO = selectBox.querySelector(".options .playerO"),
+    playBoard = document.querySelector(".play-board"),
+    players = document.querySelector(".players"),
+    allBox = document.querySelectorAll("section span"),
+    resultBox = document.querySelector(".result-box"),
+    wonText = resultBox.querySelector(".won-text"),
+    replayBtn = resultBox.querySelector("button");
+// Variables for game state
+let playerXIcon = "fas fa-times"; // FontAwesome icon class for 'X'
+let playerOIcon = "far fa-circle"; // FontAwesome icon class for 'O'
+let playerSign = "X";
+let runBot = true;
+// Initialize the game
+window.onload = () => {
+    // Add click event to all boxes
+    allBox.forEach(box => {
+        box.addEventListener("click", () => clickedBox(box));
+    });
+};
+// Player X selection
+selectBtnX.onclick = () => {
+    selectBox.classList.add("hide");
+    playBoard.classList.add("show");
+};
+// Player O selection
+selectBtnO.onclick = () => {
+    selectBox.classList.add("hide");
+    playBoard.classList.add("show");
+    players.classList.add("active", "player");
+};
+// Handle user click
+function clickedBox(element) {
+    if (players.classList.contains("player")) {
+        playerSign = "O"; // Set sign to 'O' if player selected 'O'
+        element.innerHTML = `<i class="${playerOIcon}"></i>`; // Add 'O' icon
+        players.classList.remove("active"); // Switch active player
+    } else {
+        element.innerHTML = `<i class="${playerXIcon}"></i>`; // Add 'X' icon
+        players.classList.add("active");
+    }
+    element.setAttribute("id", playerSign); // Set ID to player sign
+    element.style.pointerEvents = "none"; 
+    playBoard.style.pointerEvents = "none";
+    selectWinner(); // Check for a winner
+    // Random delay for bot's move
+    const randomTimeDelay = Math.floor(Math.random() * 1000) + 200;
+    setTimeout(() => {
+        bot();
+    }, randomTimeDelay);
+}
+// Bot's move
+function bot() {
+    if (runBot) {
+        const availableBoxes = [...allBox].filter(box => !box.childElementCount); // Get available boxes
+        const randomBox = availableBoxes[Math.floor(Math.random() * availableBoxes.length)]; // Pick a random box
+        if (randomBox) {
+            if (players.classList.contains("player")) {
+                playerSign = "X"; // Bot plays 'X' if player chose 'O'
+                randomBox.innerHTML = `<i class="${playerXIcon}"></i>`;
+                players.classList.add("active");
+            } else {
+                playerSign = "O"; // Bot plays 'O' if player chose 'X'
+                randomBox.innerHTML = `<i class="${playerOIcon}"></i>`;
+                players.classList.remove("active");
+            }
+            randomBox.setAttribute("id", playerSign);
+            randomBox.style.pointerEvents = "none";
+            selectWinner(); // Check for a winner
+            playBoard.style.pointerEvents = "auto";
+            playerSign = "X"; // Reset to player's sign
+        }
+    }
+}
+// Get the ID of a box
+function getIdVal(classname) {
+    return document.querySelector(".box" + classname).id;
+}
+// Check if a winning combination is met
+function checkIdSign(val1, val2, val3, sign) {
+    return getIdVal(val1) === sign && getIdVal(val2) === sign && getIdVal(val3) === sign;
+}
+// Determine the winner
+function selectWinner() {
+    const winningCombinations = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9],
+        [1, 4, 7], [2, 5, 8], [3, 6, 9],
+        [1, 5, 9], [3, 5, 7]
+    ];
+    const isWinner = winningCombinations.some(combination => checkIdSign(...combination, playerSign));
+    if (isWinner) {
+        runBot = false; // Stop the bot
+        setTimeout(() => {
+            resultBox.classList.add("show");
+            playBoard.classList.remove("show");
+            wonText.innerHTML = `Spieler ${playerSign} hat gewonnen!`;
+        }, 700);
+    } else if ([...allBox].every(box => box.id)) { // Check for a draw
+        runBot = false;
+        setTimeout(() => {
+            resultBox.classList.add("show");
+            playBoard.classList.remove("show");
+            wonText.textContent = "Match has been drawn!";
+        }, 700);
+    }
+}
+// Replay button click event
+replayBtn.onclick = () => {
+    window.location.reload(); // Reload the page
+};
+
+</script>
+
+</html>
